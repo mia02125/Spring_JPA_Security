@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:mariadb://61.251.18.231:3306/security_test
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: root
+    password: com4in201
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    open-in-view: false
+    generate-ddl: true
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        ddl-auto: update
+
+  thymeleaf:
+    prefix: classpath:templates/
+    suffix: .html
+    check-template-location: true
+    mode: HTML5
+    cache: false # 개발 : false / 운영 : true
