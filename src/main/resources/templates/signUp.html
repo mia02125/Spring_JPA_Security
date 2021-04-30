@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" action="/insertUser" >
+이름
+<input type="text" class="userName" name="userName" id="userName" th:max="10" >
+<br>
+이메일
+<input type="email" class="userEmail" name="userEmail" id="userEmail" th:max="30" >
+<br>
+비밀번호
+<input type="password" class="userPassword" name="userPassword" id="userPassword" th:max="30" >
+<br>
+<button type="submit" class="insertUser" id="insertUser">저장</button>
+</form>
+</body>
+</html>

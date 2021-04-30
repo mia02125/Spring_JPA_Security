@@ -1,5 +1,7 @@
 package com.security.demo.config;
 
+import com.security.demo.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -14,7 +16,11 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @Configuration
 @EnableWebSecurity // 스프링 활성화
 // [출처] 시큐리티 설정 :  https://bamdule.tistory.com/53
+// [출처] 시큐리티 + JPA : https://victorydntmd.tistory.com/328
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private UserService userService;
 
     /**
      * 비밀번호 복호화/암호화하는 로직이 담긴 객체를 Bean으로 등록
@@ -67,10 +73,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.exceptionHandling()
                 .accessDeniedPage("/denied");
     }
-//    @Override
-//    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        // 해당 요청은 인증 대상에서 제외
-//        auth.userDetailsService(memberService).passwordEncoder(passwordEncoder());
-//
-//    }
+
 }

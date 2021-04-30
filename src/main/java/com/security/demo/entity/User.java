@@ -1,5 +1,6 @@
 package com.security.demo.entity;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -19,6 +20,12 @@ public class User {
     @Column(name = "user_password", length = 30, nullable = false)
     private String userPassword;
 
+    @Builder
+    public User(String userName, String userEmail, String userPassword) {
+        this.userName = userName;
+        this.userEmail = userEmail;
+        this.userPassword = userPassword;
+    }
 
 
 }
