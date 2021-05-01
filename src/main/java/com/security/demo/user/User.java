@@ -1,4 +1,4 @@
-package com.security.demo.entity;
+package com.security.demo.user;
 
 import lombok.*;
 
@@ -15,15 +15,15 @@ public class User {
     private Long userIdx;
     @Column(name = "user_name", length = 10, nullable = false)
     private String userName;
-    @Column(name = "user_email", length = 30, nullable = false)
-    private String userEmail;
+    @Column(name = "user_id", length = 30, nullable = false, unique = true)
+    private String userId;
     @Column(name = "user_password", length = 30, nullable = false)
     private String userPassword;
 
     @Builder
-    public User(String userName, String userEmail, String userPassword) {
+    public User(String userName, String userId, String userPassword) {
         this.userName = userName;
-        this.userEmail = userEmail;
+        this.userId = userId;
         this.userPassword = userPassword;
     }
 

@@ -6,10 +6,11 @@
 </head>
 <body>
 <table>
+    <button type="button" onclick="location.href='/user/signUp'">회원가입</button>
     <tr th:each="user : ${userList}">
         <td th:text="${user.userIdx}"></td>
         <td th:text="${user.userName}"></td>
-        <td th:text="${user.userEmail}"></td>
+        <td th:text="${user.userId}"></td>
         <td th:text="${user.userPassword}"></td>
     </tr>
 </table>

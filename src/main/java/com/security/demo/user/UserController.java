@@ -1,9 +1,5 @@
-package com.security.demo.controller;
+package com.security.demo.user;
 
-import com.security.demo.entity.User;
-import com.security.demo.repository.UserRepository;
-import com.security.demo.service.UserService;
-import net.bytebuddy.implementation.bind.MethodDelegationBinder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,17 +7,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Collections;
+import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.logging.Logger;
 
 @Controller
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
 
-    @GetMapping("/")
+    @GetMapping(value = "")
     public ModelAndView mainForm(User user) {
         ModelAndView mav = new ModelAndView();
         List<User> userList =  userService.selectUser(user);
@@ -34,7 +32,7 @@ public class UserController {
      * 로그인 페이지
      * @return
      */
-    @GetMapping("/signIn")
+    @GetMapping(value = "/signIn")
     public String signInForm() {
         return "login.html";
     }
@@ -43,7 +41,7 @@ public class UserController {
      * 회원가입 페이지
      * @return
      */
-    @GetMapping("/signUp")
+    @GetMapping(value = "/signUp")
     public String signUpForm() {
          return "signUp.html";
     }
@@ -53,11 +51,9 @@ public class UserController {
      * @param user
      * @return
      */
-    @PostMapping("/insertUser")
-    public User signUp(User user) {
-        User userInfo =  userService.insert(user);
-        System.out.println("user : " + userInfo);
-        return userInfo;
+    @PostMapping(value = "/insertUser")
+    public void signUp(User user, HttpServletResponse response) {
+        userService.insert(response, user);
     }
 
 }

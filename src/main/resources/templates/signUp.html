@@ -5,12 +5,12 @@
     <title>Title</title>
 </head>
 <body>
-<form method="post" action="/insertUser" >
+<form method="post" th:action="@{/user/insertUser}" >
 이름
 <input type="text" class="userName" name="userName" id="userName" th:max="10" >
 <br>
-이메일
-<input type="email" class="userEmail" name="userEmail" id="userEmail" th:max="30" >
+아이디 :
+<input type="text" class="userId" name="userId" id="userId" th:max="30">
 <br>
 비밀번호
 <input type="password" class="userPassword" name="userPassword" id="userPassword" th:max="30" >
