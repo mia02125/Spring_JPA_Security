@@ -42,8 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     /**
-     * authenticated() : 인증된 유저만 접근 허용
-     * permitAll() : 모든 유저 접근 허용
+     * Security 설정
      * @param http
      * @throws Exception
      */
@@ -51,13 +50,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         /**
          * HTTP요청에 대한 보안 설정
+         * authenticated() : 인증된 유저만 접근 허용
+         * permitAll() : 모든 유저 접근 허용
          */
         http.authorizeRequests()
 //                .antMatchers("/**").authenticated()
                 .antMatchers("/**").permitAll();
 
         http.formLogin()
-                .loginPage("/login")
+                .loginPage("/signIn")
                 .defaultSuccessUrl("/")
                 .permitAll();
         /**

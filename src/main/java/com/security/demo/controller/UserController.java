@@ -30,13 +30,31 @@ public class UserController {
         return mav;
     }
 
+    /**
+     * 로그인 페이지
+     * @return
+     */
+    @GetMapping("/signIn")
+    public String signInForm() {
+        return "login.html";
+    }
+
+    /**
+     * 회원가입 페이지
+     * @return
+     */
     @GetMapping("/signUp")
     public String signUpForm() {
          return "signUp.html";
     }
 
+    /**
+     * 회원가입
+     * @param user
+     * @return
+     */
     @PostMapping("/insertUser")
-    public User insertUser(User user) {
+    public User signUp(User user) {
         User userInfo =  userService.insert(user);
         System.out.println("user : " + userInfo);
         return userInfo;

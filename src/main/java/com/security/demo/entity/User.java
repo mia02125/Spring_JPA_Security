@@ -1,12 +1,12 @@
 package com.security.demo.entity;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "user")
+@NoArgsConstructor // 파라미터가 없는 생성자 | 출처 : https://dingue.tistory.com/14
 @Data
 public class User {
     @Id
