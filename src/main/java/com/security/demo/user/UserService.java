@@ -35,5 +35,16 @@ public class UserService {
             JSUtil.alert_replace(response,"해당 아이디는 존재합니다.","/user/signUp");
         }
     }
-
+    public User login(HttpServletResponse response, User user) {
+        BCryptPasswordEncoder PWEncoder = new BCryptPasswordEncoder();
+        user.setUserPassword(PWEncoder.encode(user.getUserPassword()));
+        Boolean checkUserIdAndUserPassword = userRepository.existsUserByUserIdAndUserPassword(user.getUserId(), user.getUserPassword());
+        if (checkUserIdAndUserPassword) {
+            JSUtil.alert_replace(response, "로그인되었습니다.", "/user");
+            return user;
+        } else {
+            JSUtil.alert_replace(response, "로그인 정보를 확인하세요.", "/user");
+            return user;
+        }
+    }
 }

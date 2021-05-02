@@ -7,6 +7,7 @@
 <body>
 <table>
     <button type="button" onclick="location.href='/user/signUp'">회원가입</button>
+    <button type="button" onclick="location.href='/user/signIn'">로그인</button>
     <tr th:each="user : ${userList}">
         <td th:text="${user.userIdx}"></td>
         <td th:text="${user.userName}"></td>

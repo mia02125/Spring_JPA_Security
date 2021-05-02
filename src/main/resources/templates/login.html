@@ -5,14 +5,14 @@
     <title>Title</title>
 </head>
 <body>
-<form method="post" action="/login" >
-    이메일
-    <input type="email" class="userEmail" name="userEmail" id="userEmail" max="30" >
+<form method="post" th:action="@{/user/login}" >
+    아이디 :
+    <input type="text" class="userId" name="userId" id="userId" max="30" >
     <br>
-    비밀번호
+    비밀번호 :
     <input type="password" class="userPassword" name="userPassword" id="userPassword" max="30" >
     <br>
-    <button type="submit" class="insertUser" id="insertUser">저장</button>
+    <button type="submit" class="login" id="login">로그인</button>
 </form>
 </body>
 </html>

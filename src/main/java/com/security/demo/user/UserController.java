@@ -56,4 +56,9 @@ public class UserController {
         userService.insert(response, user);
     }
 
+    @PostMapping(value = "/login")
+    public void login(User user, HttpServletResponse response) {
+        User userInfo = userService.login(response, user);
+        System.out.println("user : " + userInfo);
+    }
 }
